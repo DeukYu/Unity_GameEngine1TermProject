@@ -36,6 +36,7 @@ public class StatusController : MonoBehaviour
 
     [SerializeField]
     private Slider[] Slider_Gauge;
+    private Text[] Text_Gauge;
 
     private const int HP = 0, MP = 1, SP = 2, EXP = 3;
 
@@ -80,6 +81,44 @@ public class StatusController : MonoBehaviour
         {
             currentSp += spIncreaseSpeed;
         }
+    }
+
+    public void IncreaseHP(int _count)
+    {
+        if(currentHp + _count < hp)
+        {
+            currentHp += _count;
+        }
+        else
+        {
+            currentHp = hp;
+        }
+    }
+
+    public void IncreaseMP(int _count)
+    {
+        if(currentMp + _count < mp)
+        {
+            currentMp += _count;
+        }
+        else
+        {
+            currentMp = mp;
+        }
+    }
+
+    public void DecreaseHP(int _count)
+    {
+        currentHp -= _count;
+        if (currentHp <= 0)
+            Debug.Log("캐릭터의 hp가 0이 되었습니다.");
+    }
+
+    public void DecreaseMP(int _count)
+    {
+        currentMp -= _count;
+        if (currentMp <= 0)
+            Debug.Log("캐릭터의 mp가 0이 되었습니다.");
     }
 
     public void DecreaseStamina(int _count)

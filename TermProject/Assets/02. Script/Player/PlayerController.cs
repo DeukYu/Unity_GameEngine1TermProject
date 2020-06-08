@@ -110,11 +110,11 @@ public class PlayerController : MonoBehaviour
 
     void TryRun()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && theStatusController.GetCurrentSP() > 0)
         {
             Running();
         }
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) || theStatusController.GetCurrentSP() <= 0)
         {
             RunningCancel();
         }
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         isGround = Physics.Raycast(transform.position, Vector3.down, col.bounds.extents.y + 0.1f);
 
-        if (Input.GetKey(KeyCode.Space) && isGround)
+        if (Input.GetKey(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0)
         {
                Jump();
         }
