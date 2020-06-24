@@ -136,4 +136,9 @@ public class StatusController : MonoBehaviour
     {
         return currentSp;
     }
+
+    public int GetAtk()
+    {
+        return atk;
+    }
 }

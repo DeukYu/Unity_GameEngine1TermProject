@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
 
     private StatusController theStatusController;
 
+    private Transform tr;
+    private Transform PlayerTr;
+
+    public GameObject Monster;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +46,7 @@ public class PlayerController : MonoBehaviour
         col = gameObject.GetComponent<Collider>();
         animator = GetComponent<Animator>();
         applySpeed = walkSpeed;
-        //theStatusController = FindObjectOfType<StatusController>();
+        theStatusController = FindObjectOfType<StatusController>();
     }
 
     // Update is called once per frame
@@ -53,8 +58,6 @@ public class PlayerController : MonoBehaviour
         Move();
 
         Camera_Rotation();
-        //Character_Jump();
-        //Character_Attack();
 
         Animation_Update();
     }
@@ -105,6 +108,22 @@ public class PlayerController : MonoBehaviour
         else if (_moveDirZ == -1 && _moveDirX == -1)
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Camera_rotation * Quaternion.Euler(0, 255, 0), applySpeed * Time.deltaTime);
+        }
+    }
+
+    void Attack()
+    {
+        if(Monster != null)
+        {
+            Monster.GetComponent<MonsterControll>().GetDamage(theStatusController.GetAtk());
+        }
+    }
+
+    void TryAttack()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Attack();
         }
     }
 
