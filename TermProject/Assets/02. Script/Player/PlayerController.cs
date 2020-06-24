@@ -13,11 +13,14 @@ public class PlayerController : MonoBehaviour
     private float runSpeed = 10f;
 
     float jumpForce = 5f;
+
+    // [민감도]
     float LookSensitivity = 3f;
+
+    // [카메라 회전 리미트 값]
     float CameraRotationLimit = 60f;
 
-    float recoverTime = 0f;
-
+    bool isWalk = false;
     bool isRun = false;
     bool isGround = true;
 
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         TryJump();
         TryRun();
-
+        TryAttack();
         Move();
 
         Camera_Rotation();
@@ -151,6 +154,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        theStatusController.DecreaseStamina(10);
         Rigid.velocity = transform.up * jumpForce;
         //Rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
@@ -220,4 +224,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isAttacking", false);
         }
     }
+
+    // [상태 변수 값 반환]
+    public bool GetRun() { return isRun; }
+    public bool GetWalk() { return isWalk; }
+    public bool GetIsGround() { return isGround; }
 }

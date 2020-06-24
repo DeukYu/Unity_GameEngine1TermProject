@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class MonsterControll : MonoBehaviour
 {
-    public enum CurrentState { idle, trace, attack, hit, dead};
+    public enum CurrentState { idle, trace, attack, attackWait, hit, dead};
     public CurrentState curState = CurrentState.idle;
 
     private Transform Monstertransform;

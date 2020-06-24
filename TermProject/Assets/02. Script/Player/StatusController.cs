@@ -13,7 +13,7 @@ public enum STATUS_TYPE
 public class StatusController : MonoBehaviour
 {
 
-    private int Level;
+    private int Level = 1;
 
     private int hp;
     private int currentHp;
@@ -32,10 +32,10 @@ public class StatusController : MonoBehaviour
     private bool spUsed;
 
     private int atk;
-    private int dp;
 
     [SerializeField]
     private Slider[] Slider_Gauge;
+    [SerializeField]
     private Text[] Text_Gauge;
 
     private const int HP = 0, MP = 1, SP = 2, EXP = 3;
@@ -43,6 +43,12 @@ public class StatusController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        atk = Level * 100;
+        hp = Level * 150;
+        mp = Level * 50;
+        sp = 100;
+        currentExp = 0;
+        needExp = Level * 100;
         currentHp = hp;
         currentMp = mp;
         currentSp = sp;
@@ -62,6 +68,11 @@ public class StatusController : MonoBehaviour
         Slider_Gauge[MP].value = currentMp / mp;
         Slider_Gauge[SP].value = currentSp / sp;
         Slider_Gauge[EXP].value = currentExp / needExp;
+
+        Text_Gauge[HP].text = "HP: " + currentHp + " / " + hp;
+        Text_Gauge[MP].text = "MP: " + currentMp + " / " + mp;
+        Text_Gauge[SP].text = "SP: " + currentSp + " / " + sp;
+        Text_Gauge[HP].text = "HP: " + currentHp + " / " + hp;
     }
 
     private void SPRechargeTime()
