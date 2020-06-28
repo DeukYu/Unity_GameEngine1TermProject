@@ -20,12 +20,15 @@ public class PlayerController : MonoBehaviour
     // [카메라 회전 리미트 값]
     float CameraRotationLimit = 60f;
 
-    bool isWalk = false;
-    bool isRun = false;
-    bool isGround = true;
+    private bool isWalk = false;
+    private bool isRun = false;
+    private bool isGround = true;
+    private bool isAttack = false;
 
     Rigidbody Rigid;
     Animator animator;
+
+    private RaycastHit hitInfo;
 
     Collider col;
 
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
     float _moveDirZ;
 
     private StatusController theStatusController;
+    [SerializeField]
+    private CloseWeapon currentCloseWeapon;
 
     private Transform tr;
     private Transform PlayerTr;
@@ -126,8 +131,40 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Attack();
+            if(!isAttack)
+            {
+                StartCoroutine(HitCoroutine());
+                StartCoroutine(AttackCoroutine());
+            }
+            //Attack();
         }
+    }
+
+    protected IEnumerator AttackCoroutine()
+    {
+        isAttack = true;
+
+        yield return new WaitForSeconds(currentCloseWeapon.attackDelay - currentCloseWeapon.attackDelayA - currentCloseWeapon.attackDelayB);
+        isAttack = false;
+    }
+
+    protected IEnumerator HitCoroutine()
+    {
+        if(hitInfo.transform.tag == "Monster")
+        {
+            int sumDamage = theStatusController.GetAtk() + currentCloseWeapon.damage;
+            hitInfo.transform.GetComponent<MonsterControll>().Damage(sumDamage, transform.position);
+        }
+        yield return null;
+    }
+
+    //protected abstract IEnumerator HitCoroutine();
+
+    protected bool CheckObject()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, currentCloseWeapon.range))
+            return true;
+        return false;
     }
 
     void TryRun()

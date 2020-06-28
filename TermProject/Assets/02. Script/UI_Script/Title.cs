@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-    public string sceneName = "GameStage";
+    public string sceneName = "InGameScene";
 
     public static Title instance;
 
@@ -22,9 +25,9 @@ public class Title : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    public void ClickStart()
+    public void ClickNew()
     {
-        Debug.Log("로딩");
+        Debug.Log("New");
         SceneManager.LoadScene(sceneName);
     }
 
@@ -53,17 +56,5 @@ public class Title : MonoBehaviour
     {
         Debug.Log("게임 종료");
         Application.Quit();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

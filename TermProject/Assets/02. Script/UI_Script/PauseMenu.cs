@@ -12,23 +12,23 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            //if (!GameManager.isPause)
+            if (!GameManager.isPause)
                 CallMenu();
-            //else
+            else
                 CloseMenu();
         }
     }
 
     public void CallMenu()
     {
-        //GameObject.isPause = true;
+        GameManager.isPause = true;
         go_BaseUi.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void CloseMenu()
     {
-        //GameObject.isPause = false;
+        GameManager.isPause = false;
         go_BaseUi.SetActive(false);
         Time.timeScale = 1f;
     }
