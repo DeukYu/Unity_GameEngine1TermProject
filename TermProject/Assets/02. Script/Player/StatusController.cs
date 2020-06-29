@@ -24,11 +24,11 @@ public class StatusController : MonoBehaviour
     private int currentExp;
     private int needExp;
 
-    private int sp;
-    private int currentSp;
-    private int spIncreaseSpeed;
-    private int spRechargeTime;
-    private int currentSpRechargeTime;
+    private float sp;
+    private float currentSp;
+    private float spIncreaseSpeed;
+    private float spRechargeTime;
+    private float currentSpRechargeTime;
     private bool spUsed;
 
     private int atk;
@@ -47,6 +47,7 @@ public class StatusController : MonoBehaviour
         hp = Level * 150;
         mp = Level * 50;
         sp = 100;
+        spIncreaseSpeed = Time.deltaTime;
         currentExp = 0;
         needExp = Level * 100;
         currentHp = hp;
@@ -71,8 +72,8 @@ public class StatusController : MonoBehaviour
 
         Text_Gauge[HP].text = "HP: " + currentHp + " / " + hp;
         Text_Gauge[MP].text = "MP: " + currentMp + " / " + mp;
-        Text_Gauge[SP].text = "SP: " + currentSp + " / " + sp;
-        Text_Gauge[HP].text = "HP: " + currentHp + " / " + hp;
+        Text_Gauge[SP].text = "SP: " + (int)currentSp + " / " + sp;
+        Text_Gauge[EXP].text = "HP: " + currentExp + " / " + needExp;
     }
 
     private void SPRechargeTime()
@@ -132,7 +133,7 @@ public class StatusController : MonoBehaviour
             Debug.Log("캐릭터의 mp가 0이 되었습니다.");
     }
 
-    public void DecreaseStamina(int _count)
+    public void DecreaseStamina(float _count)
     {
         spUsed = true;
         currentSpRechargeTime = 0;
@@ -143,7 +144,7 @@ public class StatusController : MonoBehaviour
             currentSp = 0;
     }
 
-    public int GetCurrentSP()
+    public float GetCurrentSP()
     {
         return currentSp;
     }

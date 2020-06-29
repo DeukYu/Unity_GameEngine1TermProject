@@ -7,6 +7,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject go_BaseUi;
     [SerializeField] private SaveNLoad theSaveNLoad;
 
+    private void Start()
+    {
+        go_BaseUi.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {

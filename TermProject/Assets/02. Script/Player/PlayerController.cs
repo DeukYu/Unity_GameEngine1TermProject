@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private float applySpeed;
     private float walkSpeed = 5f;
-    private float runSpeed = 10f;
+    private float runSpeed = 20f;
 
     float jumpForce = 5f;
 
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         Camera_Rotation();
 
         Animation_Update();
+        
     }
 
     void Move()
@@ -199,6 +200,7 @@ public class PlayerController : MonoBehaviour
     private void Running()
     {
         isRun = true;
+        theStatusController.DecreaseStamina(10f * Time.deltaTime);
         applySpeed = runSpeed;
     }
 
