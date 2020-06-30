@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
 
     public GameObject Monster;
 
+    // [대화 관련]
+    [SerializeField]
+    private float talkRange;
+
+    private bool TalkActivated = false; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +70,26 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryAttack();
         Move();
+        CheckNpc();
+        TryAction();
 
         Camera_Rotation();
 
         Animation_Update();
         
+    }
+
+    private void CheckNpc()
+    {
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, talkRange, layerMask))
+    }
+
+    private void TryAction()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
     }
 
     void Move()

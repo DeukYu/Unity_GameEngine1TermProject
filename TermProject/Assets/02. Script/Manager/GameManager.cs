@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static bool isWater = false;
 
     public static bool isPause = false; // 메뉴가 호출되면 true
+    public static bool isTalk = false;
 
     //private WeaponManager theWM;
     private bool flag = false;
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPause)
+        if(isPause || isTalk)
         {
             canPlayerMove = false;
         }
