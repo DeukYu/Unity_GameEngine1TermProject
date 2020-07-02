@@ -13,8 +13,11 @@ w(앞), s(뒤), a(왼쪽), d(오른쪽), 마우스 왼쪽(공격), f(NPC 대화)
 **1.핵심 기술 설명**  
 **2.강의 내용 중 사용된 부분 설명**  
 **UGUI**  
-캐릭터 이미지, HP(바), MP(바), SP(바), EXP(바), 몬스터 HP(바)에서 Slider, Text 를 사용
-MainScene, PauseMenu에서 Button 사용
+캐릭터 이미지, HP(바), MP(바), SP(바), EXP(바), 몬스터 HP(바)에서 Slider, Text 를 사용  
+MainScene, PauseMenu에서 Button 사용  
+캐릭터, 몬스터, 대화창 부분에서 Aniamtion 사용  
+스크립트 내에서 Transform, Quaternion, Physics, 코루틴, IENumerator, static, GetComponent 등 여러 기능들을 사용  
+싱글톤을 사용하여 스크립트 작성  
 
 
 **외부 에셋**  
