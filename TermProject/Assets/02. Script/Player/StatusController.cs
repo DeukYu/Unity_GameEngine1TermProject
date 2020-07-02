@@ -144,6 +144,26 @@ public class StatusController : MonoBehaviour
             currentSp = 0;
     }
 
+    public void AddExp(int _exp)
+    {
+        currentExp += _exp;
+
+        if(currentExp >= needExp)
+        {
+            currentExp -= needExp;
+            Level += 1;
+        }
+
+    }
+
+    public void LevelUp()
+    {
+        atk = Level * 100;
+        hp = Level * 150;
+        mp = Level * 50;
+        needExp = Level * 100;
+    }
+
     public float GetCurrentSP()
     {
         return currentSp;

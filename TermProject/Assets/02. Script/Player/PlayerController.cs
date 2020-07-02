@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TryJump();
         TryRun();
         TryAttack();
         Move();
@@ -74,6 +73,11 @@ public class PlayerController : MonoBehaviour
 
         Animation_Update();
         
+    }
+
+    void Damage(int damage)
+    {
+
     }
 
     private void CheckNpc()
@@ -169,11 +173,13 @@ public class PlayerController : MonoBehaviour
 
     protected IEnumerator HitCoroutine()
     {
-        if(hitInfo.transform.tag == "Monster")
+        if (hitInfo.transform.tag == "Monster")
         {
             int sumDamage = theStatusController.GetAtk() + currentCloseWeapon.damage;
             hitInfo.transform.GetComponent<MonsterControll>().Damage(sumDamage, transform.position);
         }
+        else
+            yield return null;
         yield return null;
     }
 
@@ -198,23 +204,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void TryJump()
-    {
-        isGround = Physics.Raycast(transform.position, Vector3.down, col.bounds.extents.y + 0.1f);
-
-        if (Input.GetKey(KeyCode.Space) && isGround && theStatusController.GetCurrentSP() > 0)
-        {
-               Jump();
-        }
-    }
-
-    private void Jump()
-    {
-        theStatusController.DecreaseStamina(10);
-        Rigid.velocity = transform.up * jumpForce;
-        //Rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    }
-
     private void Running()
     {
         isRun = true;
@@ -227,25 +216,6 @@ public class PlayerController : MonoBehaviour
         isRun = false;
         applySpeed = walkSpeed;
     }
-
-    //void Character_Jump()
-    //{
-    //    // Raycast(어디서, 어디에, 얼마만큼 쏠것인가?)
-    //    isGround = Physics.Raycast(transform.position, Vector3.down, col.bounds.extents.y + 0.1f);
-
-    //    if (isGround == true)
-    //    {
-    //        if (Input.GetKeyDown(KeyCode.Space))
-    //        {
-    //            isJumping = true;
-    //            if (isJumping == true)
-    //            {
-    //                Rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-    //                isJumping = false;
-    //            }
-    //        }
-    //    }
-    //}
 
     void Camera_Rotation()
     {

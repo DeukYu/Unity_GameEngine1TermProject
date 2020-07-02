@@ -1448,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &558399205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1541,6 +1541,7 @@ MonoBehaviour:
   camera_Rotation: {fileID: 1125156030}
   currentCloseWeapon: {fileID: 651413456}
   Monster: {fileID: 0}
+  talkRange: 0
 --- !u!1001 &632510487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2854,6 +2855,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &1078323135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078323129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2509155, y: 1.4899673, z: 0.7406006}
+  m_Center: {x: 0.036254883, y: 0.7281525, z: 0.1296997}
 --- !u!1001 &1090803982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3322,7 +3336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1243417166
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4463,7 +4477,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756297758}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a53340b5aa6737f47a263adf2c0b6d29, type: 3}
   m_Name: 
