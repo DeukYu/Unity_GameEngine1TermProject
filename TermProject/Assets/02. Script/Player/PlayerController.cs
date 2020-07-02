@@ -42,9 +42,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private CloseWeapon currentCloseWeapon;
 
-    private Transform tr;
-    private Transform PlayerTr;
-
     public GameObject Monster;
 
     // [대화 관련]
@@ -81,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckNpc()
     {
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, talkRange, layerMask))
+        //if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, talkRange, layerMask))
     }
 
     private void TryAction()
